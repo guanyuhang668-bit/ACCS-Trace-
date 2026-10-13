@@ -2,8 +2,7 @@
 [CmdletBinding()]
 param(
     [switch]$SkipFrontend,
-    [switch]$WithModelRuntime,
-    [switch]$WithPaperTools
+    [switch]$WithModelRuntime
 )
 
 $ErrorActionPreference = "Stop"
@@ -61,20 +60,6 @@ if ($WithModelRuntime) {
     Write-Host "Installing the exact Windows x86-64 ACCS TorchScript CPU runtime dependency lock..."
     & $venvPython -m pip install --disable-pip-version-check --require-hashes --extra-index-url "https://download.pytorch.org/whl/cpu" --requirement $modelLockFile
     if ($LASTEXITCODE -ne 0) { throw "Failed to install requirements-model-runtime-win-x64-lock.txt." }
-}
-
-if ($WithPaperTools) {
-    $paperLockFile = Join-Path $projectRoot "requirements-paper-win-x64-lock.txt"
-    if (-not (Test-Path -LiteralPath $paperLockFile -PathType Leaf)) {
-        throw "requirements-paper-win-x64-lock.txt is missing; refusing an unpinned paper-tool install."
-    }
-    $venvMachine = (& $venvPython -c "import platform; print(platform.machine().lower())").Trim()
-    if ($LASTEXITCODE -ne 0 -or $venvMachine -notin @("amd64", "x86_64")) {
-        throw "The published paper-tool lock supports Windows x86-64 only. Generate and validate a platform lock before continuing."
-    }
-    Write-Host "Installing the exact Windows x86-64 paper evidence and figure dependency lock..."
-    & $venvPython -m pip install --disable-pip-version-check --require-hashes --requirement $paperLockFile
-    if ($LASTEXITCODE -ne 0) { throw "Failed to install requirements-paper-win-x64-lock.txt." }
 }
 
 Write-Host "Installing ACCS-Trace as an editable package without resolving dependencies..."
@@ -137,10 +122,9 @@ if (-not $SkipFrontend) {
 
 $installedOptions = @()
 if ($WithModelRuntime) { $installedOptions += "ACCS model runtime" }
-if ($WithPaperTools) { $installedOptions += "paper evidence/figure tools" }
 if ($installedOptions.Count -gt 0) {
     Write-Host ("Bootstrap complete with optional components: " + ($installedOptions -join ", ") + ".")
 } else {
-    Write-Host "Bootstrap complete with the lightweight demo runtime. Use -WithModelRuntime for real TorchScript packages or -WithPaperTools for paper evidence tools."
+    Write-Host "Bootstrap complete with the lightweight demo runtime. Use -WithModelRuntime to install the optional TorchScript model runtime."
 }
 Write-Host "Run .\scripts\dev.ps1 from the repository root."
