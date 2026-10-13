@@ -1,0 +1,9 @@
+Commit_SHA,Commit_Text,Commit_Code,commitdate
+a101f00,"TIKA-101 fix encrypted PDF password parsing","if (password != null) { parser.setPassword(password); }",2025-01-08T15:00:00Z
+a101abc,"Improve PDF parser metadata extraction","metadata.add(PDF_VERSION, document.version());",2025-01-07T11:00:00Z
+b202f00,"TIKA-202 release nested ZIP buffers after each archive","try { extract(zip); } finally { buffer.close(); }",2025-02-14T14:00:00Z
+b202abc,"Update archive documentation and examples","docs.add(archiveExample);",2025-02-10T09:00:00Z
+c303f00,"TIKA-303 add language detection metadata for HTML","metadata.set(LANGUAGE, detector.detect(html));",2025-03-09T13:00:00Z
+d404f00,"TIKA-404 escape script markup in issue viewer","return htmlEscape(issueText);",2025-04-03T10:00:00Z
+ffff000,"Refactor build plugin configuration","plugins.configure(build);",2025-01-05T10:00:00Z
+

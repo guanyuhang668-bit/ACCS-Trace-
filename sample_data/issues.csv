@@ -1,0 +1,6 @@
+Issue_KEY,Issue_Text,creationdate,resolutiondate
+TIKA-101,"Encrypted PDF parsing fails when a password is supplied. The parser returns an empty document.",2025-01-01T09:00:00Z,2025-01-10T18:00:00Z
+TIKA-202,"Archive extraction leaks memory when processing nested ZIP files in batch mode.",2025-02-03T10:30:00Z,2025-02-16T16:00:00Z
+TIKA-303,"Add language detection metadata to parsed HTML documents.",2025-03-01T08:00:00Z,2025-03-12T17:00:00Z
+TIKA-404,"The issue viewer must display <script>alert('review')</script> as text and never execute it.",2025-04-01T12:00:00Z,2025-04-04T12:00:00Z
+

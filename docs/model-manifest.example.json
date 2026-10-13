@@ -1,0 +1,40 @@
+{
+  "format_version": "1.0",
+  "max_batch_size": 16,
+  "metadata": {
+    "architecture": "legacy-accs-dual-encoder",
+    "deployment_calibration_included": false,
+    "exported_entrypoint": "get_logits",
+    "legacy_checkpoint_format": "torch-save-full-object-pickle",
+    "legacy_checkpoint_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "model_scope": "project",
+    "project_key_strategy": "fixed",
+    "supported_project_keys": [
+      "REPLACE_WITH_UPPERCASE_PROJECT_KEY"
+    ],
+    "training": {
+      "code_commit": "REPLACE_WITH_TRAINING_COMMIT",
+      "method": "ACCS",
+      "training_temperature": {
+        "deployment_use": "prohibited",
+        "fit_split_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "name": "T_train",
+        "value": 1.0
+      }
+    }
+  },
+  "model_file": "model/model.ts",
+  "model_name": "ACCS Issue-Commit Example",
+  "model_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "model_signature": "forward(text_input_ids:int64[B,512],code_input_ids:int64[B,512])->raw_logits:float[B,2]",
+  "model_version": "0.0.0-replace-me",
+  "package_format": "accs_torchscript_v1",
+  "positive_class_index": 1,
+  "preprocessing": "legacy_accs_roberta_bpe_v1",
+  "preprocessing_file": "preprocessing.json",
+  "preprocessing_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "producer_torch_version": "2.5.1+cpu",
+  "source_domain": "REPLACE_WITH_TRAINING_PROJECTS_AND_TIME_RANGE",
+  "tokenizer_file": "tokenizer/tokenizer.json",
+  "tokenizer_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+}

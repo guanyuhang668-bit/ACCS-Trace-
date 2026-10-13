@@ -1,0 +1,9 @@
+# Optional dependencies for accs_torchscript_v1 packages.
+# Target: CPython 3.11 on Windows x86-64, CPU only.
+# Keep NLTK/tokenizers aligned with preprocessing.json produced for the release.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+nltk==3.9.2
+numpy==1.26.4
+tokenizers==0.20.3
+torch==2.5.1+cpu
